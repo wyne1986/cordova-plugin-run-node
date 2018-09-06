@@ -1,0 +1,47 @@
+{
+  "name": "cordova-plugin-run-node",
+  "version": "1.1.0",
+  "description": "run node framework, base on nodejs-mobile-cordova",
+  "cordova": {
+    "id": "cordova-plugin-run-node",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "mobile",
+    "nodejs",
+    "node.js",
+    "nodejs-mobile",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+	"node"
+  ],
+  "author": "wyne1986",
+  "license": "MIT",
+  "dependencies": {
+    "nodejs-mobile-cordova": ">=0.2.1"
+  },
+  "devDependencies": {
+    "nodejs-mobile-cordova": ">=0.2.1"
+  },
+  "homepage": "https://github.com/wyne1986/cordova-plugin-run-node",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wyne1986/cordova-plugin-run-node"
+  },
+  "bugs": {
+    "url": "https://github.com/wyne1986/cordova-plugin-run-node/issues"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      ">=0.1.0": {
+        "cordova-ios": ">=4.4.0",
+        "cordova-android": ">=6.2.1"
+      }
+    }
+  }
+}
