@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-run-node"
-      version="1.1.9">
+      version="2.0.1">
 
   <name>run Node hooks</name>
   <description>run Node hooks, base on nodejs-mobile-cordova</description>
@@ -18,14 +18,18 @@
   <!-- ios -->
   <platform name="ios">
     
-  <hook type="after_prepare" src="install/hooks/after-prepare-file-ios.js" />
+    <hook type="after_prepare" src="install/hooks/after-prepare-file-ios.js" />
+    <hook type="after_prepare" src="install/hooks/after-prepare-patch-npm-packages.js" />
+    <hook type="after_prepare" src="install/hooks/after-prepare-native-modules-preference.js" />
 
   </platform>
 
   <!-- android -->
   <platform name="android">	
   
-  <hook type="after_prepare" src="install/hooks/after-prepare-file-android.js" />
+    <hook type="after_prepare" src="install/hooks/after-prepare-file-android.js" />
+    <hook type="after_prepare" src="install/hooks/after-prepare-patch-npm-packages.js" />
+    <hook type="after_prepare" src="install/hooks/after-prepare-native-modules-preference.js" />
 
   </platform>
 

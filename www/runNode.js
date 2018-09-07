@@ -1,36 +1,25 @@
 var exec = require("cordova/exec");
 module.exports = {
-    callback: function (func,params){
-        const cordova = require('cordova-bridge');
-        var param = params;
-        try{
-            param = JSON.stringify(params);
-        }catch(ec){
-            param = typeof params != 'undefined' && params != null ? '"' + params.toString() + '"' : '';
-        }
-        if(typeof func == 'function'){
-            cordova.channel.send("try{("+func.toString()+")("+param+")}catch(e){console.error(e);}");
-        }else{
-            console.error('args func is not a function');
-        }
+    init: function (nfunc,dfunc){
+		nodejs.channel.setListener(function(msg){
+			eval(msg);
+		});
+		nodejs.start('main.js', function(err){
+			if (err) {
+				console.log(err);
+			}else{
+				if(typeof dfunc == 'function')dfunc();
+				if(typeof nfunc == 'function')runNode.run(nfunc);
+			}
+		});
     },
-    getRuntimeDir: function(){
-        return path.join(__dirname,'tmp');
-    },
-    clearRuntimeDir: function() {
-        let path = runNodeBack.getRuntimeDir();
-        var files = [];
-        if( fs.existsSync(path) ) {
-            files = fs.readdirSync(path);
-            files.forEach(function(file,index){
-                var curPath = path + "/" + file;
-                if(fs.statSync(curPath).isDirectory()) {
-                    deleteFolder(curPath);
-                }else{
-                    fs.unlinkSync(curPath);
-                }
-            });
-            fs.rmdirSync(path);
-        }
+    run: function(func,params){
+		var param = '';
+		try{
+			param = JSON.stringify(params);
+		}catch(e){
+			param = params.toString();
+		}
+        nodejs.channel.send('try{('+func+')('+param+')}catch(e){console.error(e);}');
     }
 }
