@@ -1,7 +1,7 @@
 {
   "name": "cordova-plugin-run-node",
-  "version": "1.1.0",
-  "description": "run node framework, base on nodejs-mobile-cordova",
+  "version": "1.1.8",
+  "description": "run node hooks, base on nodejs-mobile-cordova",
   "cordova": {
     "id": "cordova-plugin-run-node",
     "platforms": [
