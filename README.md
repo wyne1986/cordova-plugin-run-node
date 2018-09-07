@@ -1,3 +1,5 @@
+# 让你的Android和Ios可以运行node并和webUI交互
+
 # cordova-plugin-run-node
 ## 基于nodejs-mobile-cordova插件,封装简化了node代码编写方式,让你可以轻松的使用TCP/UDP编程并与UI界面交互。
 
