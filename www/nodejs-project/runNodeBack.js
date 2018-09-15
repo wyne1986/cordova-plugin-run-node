@@ -14,17 +14,18 @@ let runNodeBack = {
         }
     },
     getRuntimeDir: function(){
-        return path.join(__dirname,'tmp');
+        return __dirname+'/tmp';
     },
-    clearRuntimeDir: function() {
-        let path = runNodeBack.getRuntimeDir();
+    clearRuntimeDir: function(paths) {
+        let fs = require('fs');
+        let path = paths ? paths : runNodeBack.getRuntimeDir();
         var files = [];
         if( fs.existsSync(path) ) {
             files = fs.readdirSync(path);
             files.forEach(function(file,index){
                 var curPath = path + "/" + file;
                 if(fs.statSync(curPath).isDirectory()) {
-                    deleteFolder(curPath);
+                    runNodeBack.clearRuntimeDir(curPath);
                 }else{
                     fs.unlinkSync(curPath);
                 }

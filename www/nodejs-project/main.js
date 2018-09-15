@@ -14,12 +14,13 @@ fs.exists(dir,function(exists){
 });
 
 cordova.channel.on('message', function (msg) {
-    var tmpfile = path.join(dir,(new Date().valueOf() + parseInt(Math.random() * 1000).toString()) + '.js');
+    var modulename = path.join('tmp',(new Date().valueOf() + parseInt(Math.random() * 1000).toString()) + '.js');
+    var tmpfile = path.join(__dirname, modulename);
     fs.writeFile(tmpfile,msg,function(err){
         if(err){
             console.error(err);
         }else{
-            require(tmpfile);
+            require(modulename);
         }
     });
 });

@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-run-node"
-      version="2.0.2">
+      version="2.0.3">
 
   <name>run Node hooks</name>
   <description>run Node hooks, base on nodejs-mobile-cordova</description>
