@@ -10,6 +10,7 @@ module.exports = {
 			if (err) {
 				console.log(err);
 			}else{
+                runNode.inited = true;
 				if(typeof dfunc == 'function')dfunc();
 				if(typeof nfunc == 'function')runNode.run(nfunc);
 			}
@@ -21,20 +22,41 @@ module.exports = {
                 setTimeout(function(){
                     runNode.run(func,params);
                     runNode.again++;
-                },500);
-                console.log('wait for runNode inited, will run again after 0.5 seconds');
+                },200);
+                console.log('wait for runNode inited, will run again after 0.2 seconds,times:'+runNode.again);
             }else{
                 runNode.again = 0;
                 console.log('runNode init failed, cant run');
             }
             return;
         }
-		var param = '';
-		try{
-			param = JSON.stringify(params);
-		}catch(e){
-			param = params.toString();
-		}
-        nodejs.channel.send('try{('+func+')('+param+')}catch(e){console.error(e);}');
+        var param = '';
+        try{
+            param = JSON.stringify(params);
+        }catch(e){
+            param = params.toString();
+        }
+        var datas = 'try{('+func+')('+param+')}catch(e){console.log(e);}';
+        dirpath = cordova.file.cacheDirectory;
+        filename = 'test.js';
+        filepath = (dirpath+filename).substr(7);
+        window.resolveLocalFileSystemURL(dirpath, function (dirEntry) {
+            dirEntry.getFile(filename, {create: true, exclusive: false}, function(fileEntry) {
+                fileEntry.createWriter(function (fileWriter) {
+                    fileWriter.onwriteend = function() {
+                        nodejs.channel.send(filepath);
+                    };
+                    fileWriter.onerror = function (e) {
+                        console.log('write file failed');
+                    };
+                    data = new Blob([datas], { type: 'text/plain' });
+                    fileWriter.write(data);
+                });
+            }, function(){
+                console.log('create file failed');
+            });
+        }, function(err){
+            console.log(err);
+        });
     }
 }

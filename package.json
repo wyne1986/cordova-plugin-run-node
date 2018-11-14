@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-run-node",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "run node hooks, base on nodejs-mobile-cordova",
   "cordova": {
     "id": "cordova-plugin-run-node",
@@ -23,10 +23,12 @@
   "author": "wyne1986",
   "license": "MIT",
   "dependencies": {
-    "nodejs-mobile-cordova": ">=0.2.1"
+    "nodejs-mobile-cordova": ">=0.2.1",
+    "cordova-plugin-file": ">=6.0.0"
   },
   "devDependencies": {
-    "nodejs-mobile-cordova": ">=0.2.1"
+    "nodejs-mobile-cordova": ">=0.2.1",
+    "cordova-plugin-file": ">=6.0.0"
   },
   "homepage": "https://github.com/wyne1986/cordova-plugin-run-node",
   "repository": {
@@ -40,7 +42,7 @@
     "cordovaDependencies": {
       ">=0.1.0": {
         "cordova-ios": ">=4.4.0",
-        "cordova-android": ">=6.2.1"
+        "cordova-android": ">=6.4.0"
       }
     }
   }

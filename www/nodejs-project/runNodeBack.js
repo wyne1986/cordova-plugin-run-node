@@ -12,26 +12,6 @@ let runNodeBack = {
         }else{
             console.error('args func is not a function');
         }
-    },
-    getRuntimeDir: function(){
-        return __dirname+'/tmp';
-    },
-    clearRuntimeDir: function(paths) {
-        let fs = require('fs');
-        let path = paths ? paths : runNodeBack.getRuntimeDir();
-        var files = [];
-        if( fs.existsSync(path) ) {
-            files = fs.readdirSync(path);
-            files.forEach(function(file,index){
-                var curPath = path + "/" + file;
-                if(fs.statSync(curPath).isDirectory()) {
-                    runNodeBack.clearRuntimeDir(curPath);
-                }else{
-                    fs.unlinkSync(curPath);
-                }
-            });
-            fs.rmdirSync(path);
-        }
     }
 }
 

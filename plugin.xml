@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-run-node"
-      version="2.0.3">
+      version="2.1.0">
 
   <name>run Node hooks</name>
   <description>run Node hooks, base on nodejs-mobile-cordova</description>
@@ -10,6 +10,7 @@
   <keywords>cordova,mobile,nodejs,node.js,node</keywords>
   
   <dependency id="nodejs-mobile-cordova" version="^0.2.0" />
+  <dependency id="cordova-plugin-file" version="^6.0.0" />
 
   <js-module src="www/runNode.js" name="runNode">
     <clobbers target="runNode" />
